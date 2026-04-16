@@ -58,10 +58,25 @@ class GameTest {
 		assertEquals(24, game.score());
 	}
 
+	@Test
+	void testPartieComplete() {
+		int[] sequence = {1, 2, 10, 0, 10, 4, 2, 0, 10, 6, 2, 0, 10, 6, 4, 8, 2, 2, 7};
+		rollSequence(sequence);
+		assertEquals(122, game.score());
+	}
+	
+	
+	
 	
 	private void rollMultiple(int nb_iter, int nb_quilles) {
 		for(int i=0; i<nb_iter; ++i) {
 			game.roll(nb_quilles);
+		}
+	}
+	
+	private void rollSequence(int[] tabNbQuilles) {
+		for(int i=0; i<tabNbQuilles.length; ++i) {
+			game.roll(tabNbQuilles[i]);
 		}
 	}
 }
