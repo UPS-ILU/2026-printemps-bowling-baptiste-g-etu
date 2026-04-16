@@ -14,11 +14,11 @@ class GameTest {
 		game = new Game();
 	}
 	
+	
 	@Test
 	void testEntreeVide() {
 		assertEquals(0, game.score());
 	}
-	
 	@Test
 	void test20TirsDe0() {
 		for(int i = 0; i < 20; ++i) {
@@ -26,6 +26,20 @@ class GameTest {
 		}
 		assertEquals(0, game.score());
 	}
-	
+	@Test
+	void test20TirsDe1() {
+		for(int i = 0; i < 20; ++i) {
+			game.roll(1);
+		}
+		assertEquals(20, game.score());
+	}
+	@Test
+	void test10TirsDe1Puis2() {
+		for(int i = 0; i < 10; ++i) {
+			game.roll(1);
+			game.roll(2);
+		}
+		assertEquals(30, game.score());
+	}
 
 }
