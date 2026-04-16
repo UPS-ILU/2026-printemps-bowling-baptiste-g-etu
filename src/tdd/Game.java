@@ -6,26 +6,39 @@ public class Game {
 	private int scorePremierTir;
 	private boolean secondTir = false;
 	
-	private static int SCORE_SPARE = 10;
+	private static int SCORE_SPARE_STRIKE = 10;
 	
 	public void roll(int nbQuilles) {
 		if(!secondTir) {
 			scorePremierTir = nbQuilles;
 			
-			if(nbBoost == 0) {
-				score += nbQuilles;
-			}else {
-				score += nbQuilles * 2;
-				nbBoost--;
+			ajouterPoints(nbQuilles);
+			
+			// Strike Case
+			if(nbQuilles == SCORE_SPARE_STRIKE) {
+				nbBoost += 2;
+				secondTir = true; //Il n'y a pas de 2e lancer pour ce tour 
 			}
+			
 		}else {
-			if(scorePremierTir + nbQuilles == SCORE_SPARE) {
+			ajouterPoints(nbQuilles);
+			
+			// Spare case
+			if(scorePremierTir + nbQuilles == SCORE_SPARE_STRIKE) {
 				nbBoost ++;
 			}
-			score += nbQuilles;
 		}
 		
 		secondTir = !secondTir; 
+	}
+	
+	private void ajouterPoints(int nbQuilles) {
+		if(nbBoost == 0) {
+			score += nbQuilles;
+		}else {
+			nbBoost--;
+			score += nbQuilles*2;
+		}
 	}
 	
 	public int score() {

@@ -48,6 +48,15 @@ class GameTest {
 		assertEquals(18, game.score());
 		
 	}
+	
+	@Test
+	void testStrike() {
+		game.roll(10);
+		game.roll(3);
+		game.roll(4);
+		rollMultiple(16, 0);
+		assertEquals(24, game.score());
+	}
 
 	
 	private void rollMultiple(int nb_iter, int nb_quilles) {
