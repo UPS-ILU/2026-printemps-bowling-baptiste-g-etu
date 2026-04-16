@@ -1,4 +1,4 @@
-[] ITER 1 : Entrée vide renvoie 0
+[x] ITER 1 : Entrée vide renvoie 0
 [] ITER 2 : 20 rolls avec un score fixe
 [] ITER 3 : Prise en charge du Spare
 [] ITER 4 : Prise en charge du Strike
