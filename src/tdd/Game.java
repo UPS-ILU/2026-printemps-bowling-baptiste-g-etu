@@ -5,6 +5,7 @@ public class Game {
 	private int nbBoost = 0;
 	private int scorePremierTir;
 	private boolean secondTir = false;
+	private int numeroTour = 1;
 	
 	private static int SCORE_SPARE_STRIKE = 10;
 	
@@ -18,6 +19,7 @@ public class Game {
 			if(nbQuilles == SCORE_SPARE_STRIKE) {
 				nbBoost += 2;
 				secondTir = true; //Il n'y a pas de 2e lancer pour ce tour 
+				numeroTour++;
 			}
 			
 		}else {
@@ -27,13 +29,15 @@ public class Game {
 			if(scorePremierTir + nbQuilles == SCORE_SPARE_STRIKE) {
 				nbBoost ++;
 			}
+			numeroTour++;
 		}
 		
 		secondTir = !secondTir; 
 	}
 	
 	private void ajouterPoints(int nbQuilles) {
-		if(nbBoost == 0) {
+		// numeroTour > 10 : cas du lancer bonus
+		if(nbBoost == 0 || numeroTour > 10) {
 			score += nbQuilles;
 		}else {
 			nbBoost--;

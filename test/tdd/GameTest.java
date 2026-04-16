@@ -65,8 +65,12 @@ class GameTest {
 		assertEquals(122, game.score());
 	}
 	
-	
-	
+	@Test
+	void testPartieCompleteExtension() {
+		int[] sequence = {1, 2, 10, 0, 10, 4, 2, 0, 10, 6, 2, 0, 10, 6, 4, 8, 2, 2, 8, 8};
+		rollSequence(sequence);
+		assertEquals(131, game.score());
+	}
 	
 	private void rollMultiple(int nb_iter, int nb_quilles) {
 		for(int i=0; i<nb_iter; ++i) {
